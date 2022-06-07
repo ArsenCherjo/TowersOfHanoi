@@ -17,8 +17,8 @@ namespace TowersWindows
         private List<Disks> TowerDisks = new List<Disks>();
         AnimateView animate = new AnimateView();
         int _DiskCount = 3;
-        int diskHeight = 30;
-        int baseHeight = 20;//Base is 20 high
+        int diskHeight = 30;//Диск 30 в высоту
+        int baseHeight = 20;//База 20 в высоту
         public Form1()
         {
             InitializeComponent();
@@ -64,14 +64,14 @@ namespace TowersWindows
 
         private void resetPanel()
         {
-            //Create pegs for Tower
+            //Создать стержни для башни
             setupTower();
             panel1.Controls.Clear();
             TowerDisks = Enumerable.Range(1, _DiskCount).Select(i => new Disks() { DiskNubmer = i, peg = 'A', box = new PictureBox() }).OrderByDescending(i => i.DiskNubmer).ToList();
-            //Place Disks on panel
+            //Поместить диски на панель
             populateDisks();
-            //Set initial text value for least possible moves
-            lblCounter.Text = string.Format("Best possible moves {0}", GetMoveCount(_DiskCount));
+            //Установить начальное текстовое значение для наименьших возможных ходов
+            lblCounter.Text = string.Format("Наименьшее количество ходов {0}", GetMoveCount(_DiskCount));
         }
 
         private int getDiskY(Disks disk)
@@ -100,16 +100,16 @@ namespace TowersWindows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnSolve_Click(object sender, EventArgs e)
+        private void BSolve_Click(object sender, EventArgs e)
         {
             resetPanel();
-            btnSolve.Enabled = false;
+            bSolve.Enabled = false;
             moves.Clear();
-            int NumberOfDisks = _DiskCount;                     // Declare number of disks
+            int NumberOfDisks = _DiskCount;   // Объявить количество дисков
             solveTower(NumberOfDisks);
             listMoves.DataSource = null;
-            listMoves.DataSource = moves;                            // Solve tower
-            btnSolve.Enabled = true;
+            listMoves.DataSource = moves;     //Для решения башни
+            bSolve.Enabled = true;
         }
         /// <summary>
         /// Setup tower values, process tower and display moves required
@@ -117,10 +117,10 @@ namespace TowersWindows
         /// <param name="numberOfDisks">Number of disks within the tower scenario</param>
         private void solveTower(int numberOfDisks)
         {
-            char startPeg = 'A';                                // start tower in output
-            char endPeg = 'C';                                  // end tower in output
-            char tempPeg = 'B';                                 // temporary tower in output
-            //Solve towers using recursive method
+            char startPeg = 'A';                                // стартовая башня на выходе
+            char endPeg = 'C';                                  // конечная башня на выходе
+            char tempPeg = 'B';                                 // буферная башня на выходе
+            //Решает башни рекурсией
             solveTowers(numberOfDisks, startPeg, endPeg, tempPeg);      
         }
         /// <summary>
@@ -139,16 +139,16 @@ namespace TowersWindows
                 Disks currentDisk = TowerDisks.Find(x => x.DiskNubmer == n);
                 currentDisk.peg = endPeg;
 
-                //Animate
+                //Анимирование
                 animate.moveUp(currentDisk.box, 50);
-                if (startPeg < endPeg)//Move Right
+                if (startPeg < endPeg)//Ход вправо
                     animate.moveRight(currentDisk.box, getDiskX(currentDisk));
-                else //move Left
+                else //Ход влево
                     animate.moveLeft(currentDisk.box, getDiskX(currentDisk));
                 animate.moveDown(currentDisk.box, getDiskY(currentDisk));
 
-                //Format line
-                string line = string.Format("Move disk {0} from {1} to {2}", n, startPeg, endPeg);
+                //listBox (listMoves)
+                string line = string.Format("Ход диска {0} с {1} на {2}", n, startPeg, endPeg);
                 Console.WriteLine(line);
                 moves.Add(line);
                 solveTowers(n - 1, tempPeg, endPeg, startPeg);
@@ -193,7 +193,7 @@ namespace TowersWindows
             Graphics g = panel1.CreateGraphics();
             int topSpacing = 100;
             int width = 20;
-            //Draw bottom bar
+            //Рисует нижнюю часть
             g.FillRectangle(sb, 0, panel1.Height - baseHeight, panel1.Width, baseHeight);
             //Рисует 1 стержень
             drawPeg(panel1, g, sb, 1, width, topSpacing);

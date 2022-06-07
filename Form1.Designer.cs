@@ -30,7 +30,7 @@
         {
             this.DiskCount = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSolve = new System.Windows.Forms.Button();
+            this.bSolve = new System.Windows.Forms.Button();
             this.listMoves = new System.Windows.Forms.ListBox();
             this.lblMoves = new System.Windows.Forms.Label();
             this.lblCounter = new System.Windows.Forms.Label();
@@ -72,13 +72,13 @@
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(185, 9);
-            this.btnSolve.Name = "btnSolve";
-            this.btnSolve.Size = new System.Drawing.Size(100, 23);
-            this.btnSolve.TabIndex = 2;
-            this.btnSolve.Text = "Решить";
-            this.btnSolve.UseVisualStyleBackColor = true;
-            this.btnSolve.Click += new System.EventHandler(this.BtnSolve_Click);
+            this.bSolve.Location = new System.Drawing.Point(185, 9);
+            this.bSolve.Name = "btnSolve";
+            this.bSolve.Size = new System.Drawing.Size(100, 23);
+            this.bSolve.TabIndex = 2;
+            this.bSolve.Text = "Решить";
+            this.bSolve.UseVisualStyleBackColor = true;
+            this.bSolve.Click += new System.EventHandler(this.BSolve_Click);
             // 
             // listMoves
             // 
@@ -105,9 +105,9 @@
             this.lblCounter.AutoSize = true;
             this.lblCounter.Location = new System.Drawing.Point(291, 14);
             this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(153, 13);
+            this.lblCounter.Size = new System.Drawing.Size(183, 13);
             this.lblCounter.TabIndex = 6;
-            this.lblCounter.Text = "Info: Best solution in {7} moves";
+            this.lblCounter.Text = "Наименьшее количество ходов {7}";
             // 
             // panel1
             // 
@@ -126,7 +126,7 @@
             this.Controls.Add(this.lblCounter);
             this.Controls.Add(this.lblMoves);
             this.Controls.Add(this.listMoves);
-            this.Controls.Add(this.btnSolve);
+            this.Controls.Add(this.bSolve);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DiskCount);
             this.Name = "Form1";
@@ -141,7 +141,7 @@
 
         private System.Windows.Forms.NumericUpDown DiskCount;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSolve;
+        private System.Windows.Forms.Button bSolve;
         private System.Windows.Forms.ListBox listMoves;
         private System.Windows.Forms.Label lblMoves;
         private System.Windows.Forms.Label lblCounter;
