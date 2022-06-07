@@ -6,50 +6,50 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TowersWindows
+namespace TowersOfHanoi
 {
     class AnimateView
     {
         public static Panel view;
         public void moveUp(PictureBox Disk, int newY)
         {
-            // Start moving.
+            // начало движения вверх
             while(Disk.Location.Y > newY)
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X, Disk.Location.Y - 10);
                 view.Refresh();
-                Thread.Sleep(10);
+                Thread.Sleep(0);
             }
         }
         public void moveDown(PictureBox Disk, int newY)
         {
-            // Start moving.
+          
             while (Disk.Location.Y < newY)
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X, Disk.Location.Y + 10);
                 view.Refresh();
-                Thread.Sleep(10);
+                Thread.Sleep(0);
             }
         }
         public void moveRight(PictureBox Disk, int newX)
         {
-            // Start moving.
+            
             while (Disk.Location.X < newX)
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X + 10, Disk.Location.Y);
                 view.Refresh();
-                Thread.Sleep(10);
+                Thread.Sleep(0);
             }
 
         }
         public void moveLeft(PictureBox Disk, int newX)
         {
-            // Start moving.
+            
             while (Disk.Location.X > newX)
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X - 10, Disk.Location.Y);
                 view.Refresh();
-                Thread.Sleep(10);
+                Thread.Sleep(0);
             }
         }
     }

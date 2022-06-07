@@ -1,6 +1,6 @@
-﻿namespace TowersWindows
+﻿namespace TowersOfHanoi
 {
-    partial class Form1
+    partial class TowerOfHanoi
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.listMoves = new System.Windows.Forms.ListBox();
             this.lblMoves = new System.Windows.Forms.Label();
             this.lblCounter = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DiskCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,10 +70,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Количество дисков";
             // 
-            // btnSolve
+            // bSolve
             // 
             this.bSolve.Location = new System.Drawing.Point(185, 9);
-            this.bSolve.Name = "btnSolve";
+            this.bSolve.Name = "bSolve";
             this.bSolve.Size = new System.Drawing.Size(100, 23);
             this.bSolve.TabIndex = 2;
             this.bSolve.Text = "Решить";
@@ -111,26 +111,26 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(15, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 400);
-            this.panel1.TabIndex = 7;
+            this.Panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Panel.Location = new System.Drawing.Point(15, 38);
+            this.Panel.Name = "panel1";
+            this.Panel.Size = new System.Drawing.Size(800, 400);
+            this.Panel.TabIndex = 7;
             // 
-            // Form1
+            // TowerOfHanoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 451);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel);
             this.Controls.Add(this.lblCounter);
             this.Controls.Add(this.lblMoves);
             this.Controls.Add(this.listMoves);
             this.Controls.Add(this.bSolve);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DiskCount);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "TowerOfHanoi";
+            this.Text = "TowerOfHanoi";
             ((System.ComponentModel.ISupportInitialize)(this.DiskCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,7 +145,7 @@
         private System.Windows.Forms.ListBox listMoves;
         private System.Windows.Forms.Label lblMoves;
         private System.Windows.Forms.Label lblCounter;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Panel;
     }
 }
 
