@@ -14,7 +14,7 @@ namespace TowersWindows
     public partial class Form1 : Form
     {
         private List<string> moves = new List<string>();
-        private List<Disks> _TowerDisks = new List<Disks>();
+        private List<Disks> TowerDisks = new List<Disks>();
         AnimateView animate = new AnimateView();
         int _DiskCount = 3;
         int diskHeight = 30;
@@ -30,27 +30,23 @@ namespace TowersWindows
         /// </summary>
         private void populateDisks()
         {
-            int ii = 1;
-            foreach (Disks disk in _TowerDisks)
+            int i = 1;
+            foreach (Disks disk in TowerDisks)
             {
                 PictureBox panelBox = disk.box;
                 panelBox.BackColor = colorSelector(disk);
-                disk.width = 200 - (20 * ii);
+                disk.width = 200 - (20 * i);
                 panelBox.Width = disk.width;
                 panelBox.Height = diskHeight;
-                panelBox.Tag = disk.DiskNo;
+                panelBox.Tag = disk.DiskNubmer;
                 panelBox.BorderStyle = BorderStyle.FixedSingle;
-                Point boxLocation = new Point(getDiskX(disk), (panel1.Height - baseHeight) - (diskHeight * ii++));
+                Point boxLocation = new Point(getDiskX(disk), (panel1.Height - baseHeight) - (diskHeight * i++));
                 panelBox.Location = boxLocation;
                 disk.box = panelBox;
                 panel1.Controls.Add(disk.box);
             }
         }
-        /// <summary>
-        /// Get X position for Disk 
-        /// </summary>
-        /// <param name="disk">Disk to check</param>
-        /// <returns>X position for Disk</returns>
+
         private int getDiskX(Disks disk)
         {
             int X = 0;
@@ -65,35 +61,29 @@ namespace TowersWindows
 
             return X; 
         }
-        /// <summary>
-        /// Recreates the Panel
-        /// </summary>
+
         private void resetPanel()
         {
             //Create pegs for Tower
             setupTower();
             panel1.Controls.Clear();
-            _TowerDisks = Enumerable.Range(1, _DiskCount).Select(i => new Disks() { DiskNo = i, peg = 'A', box = new PictureBox() }).OrderByDescending(i => i.DiskNo).ToList();
+            TowerDisks = Enumerable.Range(1, _DiskCount).Select(i => new Disks() { DiskNubmer = i, peg = 'A', box = new PictureBox() }).OrderByDescending(i => i.DiskNubmer).ToList();
             //Place Disks on panel
             populateDisks();
             //Set initial text value for least possible moves
             lblCounter.Text = string.Format("Best possible moves {0}", GetMoveCount(_DiskCount));
         }
-        /// <summary>
-        /// Get Disk Y position
-        /// </summary>
-        /// <param name="disk">Disk to check</param>
-        /// <returns>Y Position for Disk</returns>
+
         private int getDiskY(Disks disk)
         {
             int Y = 0;
-            int stackNo = _TowerDisks.Count(x => x.peg == disk.peg);
+            int stackNo = TowerDisks.Count(x => x.peg == disk.peg);
             Y = panel1.Height - baseHeight - (diskHeight * stackNo);
             return Y;
         }
         private Color colorSelector(Disks disk)
         {
-            switch (disk.DiskNo)
+            switch (disk.DiskNubmer)
             {
                 case 1: return Color.Red;
                 case 2: return Color.OrangeRed;
@@ -115,7 +105,6 @@ namespace TowersWindows
             resetPanel();
             btnSolve.Enabled = false;
             moves.Clear();
-            //listMoves.Items.Clear();                            // Clear List of moves
             int NumberOfDisks = _DiskCount;                     // Declare number of disks
             solveTower(NumberOfDisks);
             listMoves.DataSource = null;
@@ -147,7 +136,7 @@ namespace TowersWindows
             {
                 solveTowers(n - 1, startPeg, tempPeg, endPeg);
 
-                Disks currentDisk = _TowerDisks.Find(x => x.DiskNo == n);
+                Disks currentDisk = TowerDisks.Find(x => x.DiskNubmer == n);
                 currentDisk.peg = endPeg;
 
                 //Animate
@@ -206,11 +195,11 @@ namespace TowersWindows
             int width = 20;
             //Draw bottom bar
             g.FillRectangle(sb, 0, panel1.Height - baseHeight, panel1.Width, baseHeight);
-            //Draw Peg 1
+            //Рисует 1 стержень
             drawPeg(panel1, g, sb, 1, width, topSpacing);
-            //Draw Peg 2
+            //Рисует 2 стержень
             drawPeg(panel1, g, sb, 2, width, topSpacing);
-            //Draw Peg 3
+            //Рисует 3 стержень
             drawPeg(panel1, g, sb, 3, width, topSpacing);
         }
         /// <summary>
@@ -226,5 +215,7 @@ namespace TowersWindows
         {
             g.FillRectangle(sb, ((int)(canvas.Width / 4) * pegNo)-(pegWidth/2), topSpacing, pegWidth, canvas.Height - topSpacing);
         }
+
+
     }
 }

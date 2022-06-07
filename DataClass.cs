@@ -9,7 +9,7 @@ namespace TowersWindows
 {
     class Disks
     {
-        public int DiskNo { get; set; }
+        public int DiskNubmer { get; set; }
         public PictureBox box { get; set; }
         public int width { get; set; }
         public char peg { get; set; }

@@ -40,7 +40,7 @@
             // 
             // DiskCount
             // 
-            this.DiskCount.Location = new System.Drawing.Point(114, 12);
+            this.DiskCount.Location = new System.Drawing.Point(123, 12);
             this.DiskCount.Maximum = new decimal(new int[] {
             8,
             0,
@@ -66,9 +66,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Number of disks";
+            this.label1.Text = "Количество дисков";
             // 
             // btnSolve
             // 
@@ -76,7 +76,7 @@
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(100, 23);
             this.btnSolve.TabIndex = 2;
-            this.btnSolve.Text = "Solve";
+            this.btnSolve.Text = "Решить";
             this.btnSolve.UseVisualStyleBackColor = true;
             this.btnSolve.Click += new System.EventHandler(this.BtnSolve_Click);
             // 
@@ -96,9 +96,9 @@
             this.lblMoves.AutoSize = true;
             this.lblMoves.Location = new System.Drawing.Point(818, 12);
             this.lblMoves.Name = "lblMoves";
-            this.lblMoves.Size = new System.Drawing.Size(39, 13);
+            this.lblMoves.Size = new System.Drawing.Size(34, 13);
             this.lblMoves.TabIndex = 5;
-            this.lblMoves.Text = "Moves";
+            this.lblMoves.Text = "Ходы";
             // 
             // lblCounter
             // 
