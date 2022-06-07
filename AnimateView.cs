@@ -17,8 +17,8 @@ namespace TowersOfHanoi
             while(Disk.Location.Y > newY)
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X, Disk.Location.Y - 10);
-                view.Refresh();
-                Thread.Sleep(1);
+                view.Refresh();//перерисовывает
+                Thread.Sleep(1);//Приостанавливает текущий поток на заданное время
             }
         }
         public void moveDown(PictureBox Disk, int newY)
