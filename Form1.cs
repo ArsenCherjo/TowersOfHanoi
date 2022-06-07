@@ -34,16 +34,16 @@ namespace TowersOfHanoi
             foreach (Disks disk in TowerDisks)
             {
                 PictureBox panelBox = disk.box;
-                panelBox.BackColor = colorSelector(disk);
-                disk.width = 200 - (20 * i);
-                panelBox.Width = disk.width;
-                panelBox.Height = diskHeight;
-                panelBox.Tag = disk.DiskNubmer;
-                panelBox.BorderStyle = BorderStyle.FixedSingle;
-                Point boxLocation = new Point(getDiskX(disk), (Panel.Height - baseHeight) - (diskHeight * i++));
-                panelBox.Location = boxLocation;
-                disk.box = panelBox;
-                Panel.Controls.Add(disk.box);
+                panelBox.BackColor = colorSelector(disk); // Цвет прямугольника
+                disk.width = 200 - (20 * i); // Ширина прямоугольника зависимо от номера i
+                panelBox.Width = disk.width; // Присваивает ширину прямоугольникy
+                panelBox.Height = diskHeight;  // Присваивает высоту прямоугольнику
+                panelBox.Tag = disk.DiskNubmer; // Присваивает номер диска в комент прямоугольника
+                panelBox.BorderStyle = BorderStyle.FixedSingle; // Границы прямоугольника
+                Point boxLocation = new Point(getDiskX(disk), (Panel.Height - baseHeight) - (diskHeight * i++)); // Вычисляет точку нахождения прямугольника
+                panelBox.Location = boxLocation; // Присваивает точку
+                disk.box = panelBox; // Возвращает весь обработанный прямоугольник обратно в объект класса
+                Panel.Controls.Add(disk.box); // Добавляет объект класса на панель
             }
         }
 
@@ -95,11 +95,7 @@ namespace TowersOfHanoi
                 default: return Color.Black;
             }
         }
-        /// <summary>
-        /// Button click event to solve tower
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void BSolve_Click(object sender, EventArgs e)
         {
             resetPanel();
@@ -111,10 +107,7 @@ namespace TowersOfHanoi
             listMoves.DataSource = moves;     //Для решения башни
             bSolve.Enabled = true;
         }
-        /// <summary>
-        /// Setup tower values, process tower and display moves required
-        /// </summary>
-        /// <param name="numberOfDisks">Number of disks within the tower scenario</param>
+
         private void solveTower(int numberOfDisks)
         {
             char startPeg = 'A';                                // стартовая башня на выходе
@@ -123,13 +116,7 @@ namespace TowersOfHanoi
             //Решает башни рекурсией
             solveTowers(numberOfDisks, startPeg, endPeg, tempPeg);      
         }
-        /// <summary>
-        /// Recursive Method to solve Towers of Hanoi
-        /// </summary>
-        /// <param name="n">Disk to move</param>
-        /// <param name="startPeg">Peg to take disk from</param>
-        /// <param name="endPeg">Peg to move disk to</param>
-        /// <param name="tempPeg">auxiliary peg</param>
+
         private void solveTowers(int n, char startPeg, char endPeg, char tempPeg)
         {
             if (n > 0)
@@ -154,12 +141,8 @@ namespace TowersOfHanoi
                 solveTowers(n - 1, tempPeg, endPeg, startPeg);
             }
         }
-        /// <summary>
-        /// get the least amount of moves required to solve the tower
-        /// </summary>
-        /// <param name="numberOfDisks">Total number of disks in tower</param>
-        /// <returns>Number of moves</returns>
-        public static int GetMoveCount(int numberOfDisks)
+
+        public static int GetMoveCount(int numberOfDisks)//Вычислякт наим число ходов
         {
             double numberOfDisks_Double = numberOfDisks;
             return (int)Math.Pow(2.0, numberOfDisks_Double) - 1;
@@ -189,8 +172,8 @@ namespace TowersOfHanoi
         /// </summary>
         private void setBase()
         {
-            SolidBrush sb = new SolidBrush(Color.RosyBrown);
-            Graphics g = Panel.CreateGraphics();
+            SolidBrush sb = new SolidBrush(Color.RosyBrown);//Кисть
+            Graphics g = Panel.CreateGraphics();//Холст
             int topSpacing = 100;
             int width = 20;
             //Рисует нижнюю часть
@@ -202,15 +185,7 @@ namespace TowersOfHanoi
             //Рисует 3 стержень
             drawPeg(Panel, g, sb, 3, width, topSpacing);
         }
-        /// <summary>
-        /// Draw a peg 
-        /// </summary>
-        /// <param name="canvas">Panel to draw pegs on</param>
-        /// <param name="g">panel.CreateGraphics</param>
-        /// <param name="sb">SolidBrush</param>
-        /// <param name="pegNo">Peg Number 1-3</param>
-        /// <param name="pegWidth">Desired peg width</param>
-        /// <param name="topSpacing">Spacing from the top</param>
+
         private void drawPeg(Panel canvas,Graphics g, SolidBrush sb, int pegNo,int pegWidth, int topSpacing)
         {
             g.FillRectangle(sb, ((int)(canvas.Width / 4) * pegNo)-(pegWidth/2), topSpacing, pegWidth, canvas.Height - topSpacing);

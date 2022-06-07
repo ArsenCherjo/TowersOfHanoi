@@ -18,7 +18,7 @@ namespace TowersOfHanoi
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X, Disk.Location.Y - 10);
                 view.Refresh();
-                Thread.Sleep(0);
+                Thread.Sleep(1);
             }
         }
         public void moveDown(PictureBox Disk, int newY)
@@ -28,7 +28,7 @@ namespace TowersOfHanoi
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X, Disk.Location.Y + 10);
                 view.Refresh();
-                Thread.Sleep(0);
+                Thread.Sleep(1);
             }
         }
         public void moveRight(PictureBox Disk, int newX)
@@ -38,7 +38,7 @@ namespace TowersOfHanoi
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X + 10, Disk.Location.Y);
                 view.Refresh();
-                Thread.Sleep(0);
+                Thread.Sleep(1);
             }
 
         }
@@ -49,7 +49,7 @@ namespace TowersOfHanoi
             {
                 Disk.Location = new System.Drawing.Point(Disk.Location.X - 10, Disk.Location.Y);
                 view.Refresh();
-                Thread.Sleep(0);
+                Thread.Sleep(1);
             }
         }
     }
